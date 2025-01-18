@@ -21,8 +21,10 @@ class Bands {
         this.bands.map(band => {
             if (band.id === id) {
                 band.votes++;
+                console.log(band.votes);
                 return band;
             } else {
+                console.log('No existe banda con id:', id);
                 return band;
             }
         });

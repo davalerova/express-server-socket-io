@@ -22,13 +22,10 @@ io.on('connection', client => {
         console.log('Cliente desconectado');
     });
 
-    client.on('mensaje', data => {
-        console.log('Mensaje recibido:', data);
-        io.emit('mensaje', {"nuevo_mensaje": data});
-    });
-
-    client.on('emitir-mensaje', (payload) => {
-        console.log('Emitiendo mensaje:', payload);
-        client.broadcast.emit('nuevo-mensaje', payload);
+    client.on('vote-by-band', (payload) => {
+        console.log('Voto recibido:', payload);
+        bands.voteByBand(payload.id);
+        io.emit('active-bands', bands.getBands());
+        console.log(bands.getBands());
     });
   });
