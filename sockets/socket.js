@@ -28,4 +28,11 @@ io.on('connection', client => {
         io.emit('active-bands', bands.getBands());
         console.log(bands.getBands());
     });
+
+    client.on('add-band', (payload) => {
+        console.log('Banda recibida:', payload);
+        bands.addBand(new Band(payload.name));
+        io.emit('active-bands', bands.getBands());
+        console.log(bands.getBands());
+    });
   });
