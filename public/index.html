@@ -18,7 +18,7 @@
             console.log('Desconectado');
         });
 
-        socket.on('mensaje', data => {
+        socket.on('nuevo-mensaje', (data) => {
             console.log('Mensaje recibido:', data);
         });
 

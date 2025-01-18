@@ -11,4 +11,9 @@ io.on('connection', client => {
         console.log('Mensaje recibido:', data);
         io.emit('mensaje', {"nuevo_mensaje": data});
     });
+
+    client.on('emitir-mensaje', (payload) => {
+        console.log('Emitiendo mensaje:', payload);
+        client.broadcast.emit('nuevo-mensaje', payload);
+    });
   });
