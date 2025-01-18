@@ -35,4 +35,11 @@ io.on('connection', client => {
         io.emit('active-bands', bands.getBands());
         console.log(bands.getBands());
     });
+
+    client.on('delete-band', (payload) => {
+        console.log('Banda eliminada:', payload);
+        bands.deleteBand(payload.id);
+        io.emit('active-bands', bands.getBands());
+        console.log(bands.getBands());
+    });
   });
